@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Maisons</title>
+</head>
+<body>
+<h1>Liste des Maisons</h1>
+<table border="1">
+    <tr>
+        <td>Adresse</td>
+        <td>nbrchambre</td>
+    </tr>
+    {%  for v in ListeMaison %}
+        <tr>
+            <td>{{ v.Adresse }}</td>
+            <td>{{ v.nbrchambre }}</td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
