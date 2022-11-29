@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mise à jour d'une Maison </title>
+</head>
+<body>
+
+<h1>Mise à jour d'une Maison </h1>
+<form action="" method="post">
+    {{ form_widget(editFormMaison) }}
+    <br>
+    <button style="background-color: #95a5a6" class="btn btn-success" type="submit" >Mise à jour</button>
+</form>
+</body>
+</html>
+{% endblock %}

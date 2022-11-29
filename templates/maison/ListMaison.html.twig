@@ -1,3 +1,5 @@
+{% extends 'base.html.twig' %}
+{% block body %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,18 +7,31 @@
     <title>Liste des Maisons</title>
 </head>
 <body>
+
+<center>
 <h1>Liste des Maisons</h1>
-<table border="1">
+
+<table border="2"  >
     <tr>
         <td>Adresse</td>
         <td>nbrchambre</td>
+        <td>sallebain</td>
+
+        <td>Delete</td>
+        <td>Update</td>
     </tr>
-    {%  for v in ListeMaison %}
+    {%  for m in ListeMaison %}
         <tr>
-            <td>{{ v.Adresse }}</td>
-            <td>{{ v.nbrchambre }}</td>
+            <td>{{ m.Adresse }}</td>
+            <td>{{ m.nbrchambre }}</td>
+            <td>{{ m.sallebain }}</td>
+
+            <td> <a href="{{ path("maisonDelete", {'id': m.id}) }}">Delete</a></td>
+            <td> <a href="{{ path("maisonUpdate", {'id': m.id}) }}">Update</a></td>
         </tr>
     {% endfor %}
 </table>
+</center>
 </body>
 </html>
+{% endblock %}

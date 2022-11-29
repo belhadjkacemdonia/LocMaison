@@ -6,7 +6,16 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Controller\\ClientController' => $baseDir . '/src/Controller/ClientController.php',
+    'App\\Controller\\MaisonController' => $baseDir . '/src/Controller/MaisonController.php',
+    'App\\Entity\\Client' => $baseDir . '/src/Entity/Client.php',
+    'App\\Entity\\Location' => $baseDir . '/src/Entity/Location.php',
+    'App\\Entity\\Maison' => $baseDir . '/src/Entity/Maison.php',
+    'App\\Form\\MaisonForm' => $baseDir . '/src/Form/MaisonForm.php',
     'App\\Kernel' => $baseDir . '/src/Kernel.php',
+    'App\\Repository\\ClientRepository' => $baseDir . '/src/Repository/ClientRepository.php',
+    'App\\Repository\\LocationRepository' => $baseDir . '/src/Repository/LocationRepository.php',
+    'App\\Repository\\MaisonRepository' => $baseDir . '/src/Repository/MaisonRepository.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Collator' => $vendorDir . '/symfony/intl/Resources/stubs/Collator.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',

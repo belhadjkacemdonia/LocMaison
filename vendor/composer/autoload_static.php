@@ -577,7 +577,16 @@ class ComposerStaticInit685b307e308294f818e8364071e1f968
     );
 
     public static $classMap = array (
+        'App\\Controller\\ClientController' => __DIR__ . '/../..' . '/src/Controller/ClientController.php',
+        'App\\Controller\\MaisonController' => __DIR__ . '/../..' . '/src/Controller/MaisonController.php',
+        'App\\Entity\\Client' => __DIR__ . '/../..' . '/src/Entity/Client.php',
+        'App\\Entity\\Location' => __DIR__ . '/../..' . '/src/Entity/Location.php',
+        'App\\Entity\\Maison' => __DIR__ . '/../..' . '/src/Entity/Maison.php',
+        'App\\Form\\MaisonForm' => __DIR__ . '/../..' . '/src/Form/MaisonForm.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
+        'App\\Repository\\ClientRepository' => __DIR__ . '/../..' . '/src/Repository/ClientRepository.php',
+        'App\\Repository\\LocationRepository' => __DIR__ . '/../..' . '/src/Repository/LocationRepository.php',
+        'App\\Repository\\MaisonRepository' => __DIR__ . '/../..' . '/src/Repository/MaisonRepository.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Collator' => __DIR__ . '/..' . '/symfony/intl/Resources/stubs/Collator.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',

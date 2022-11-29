@@ -1,14 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block body %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>addMaison</title>
+    <title>Création d'une Maison </title>
 </head>
 <body>
-<h1>Ajout d'un maison </h1>
+
+<h1>Création d'une Maison </h1>
 <form action="" method="post">
-    {{ form_widget(formMaison) }}
-    <input type="submit" value="Add Maison ">
+    {{ form_widget(FormMaison) }}
+    <br>
+    <button style="background-color: #95a5a6" class="btn btn-success" type="submit" >Ajouter la Maison</button>
 </form>
+
 </body>
 </html>
+{% endblock %}
