@@ -16,6 +16,8 @@
         <td>Adresse</td>
         <td>nbrchambre</td>
         <td>sallebain</td>
+        <td>image</td>
+
 
         <td>Delete</td>
         <td>Update</td>
@@ -25,6 +27,7 @@
             <td>{{ m.Adresse }}</td>
             <td>{{ m.nbrchambre }}</td>
             <td>{{ m.sallebain }}</td>
+            <td>{{ m.image }}</td>
 
             <td> <a href="{{ path("maisonDelete", {'id': m.id}) }}">Delete</a></td>
             <td> <a href="{{ path("maisonUpdate", {'id': m.id}) }}">Update</a></td>

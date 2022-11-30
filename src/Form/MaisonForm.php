@@ -4,6 +4,7 @@ namespace App\Form;
 
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,6 +30,13 @@ public function buildForm(FormBuilderInterface $builder, array $options)
                 'placeholder'=>"Saisir nombre de salle de bain",
                 'class'=> 'form-control'
             ]
+        ])
+        ->add( 'image', FileType::class, [
+            'attr' =>[
+            'required'=> true,
+            'class'=> 'form-control'
+            ]
+
         ]);
 
 
