@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Search a House</title>
+    </head>
+    <body>
+
+    <h1>Search a House</h1>
+    <form action="" method="post">
+        Adresse : <input type="text" name="input_adresse">
+        <input type="submit" value="SEARCH">
+    </form>
+    {% if maisons is empty %}
+    Aucune maisons trouvée
+    {% else %}
+        <br>
+    <table border="1"  style="width:100%">
+        <tr>
+            <td>Adresse</td>
+            <td>Modele</td>
+        </tr>
+        {%  for m in maisons %}
+        <tr>
+            <td>{{m.adresse}}</td>
+            <td>{{m.modele}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+    </body>
+    </html>
+{% endblock %}

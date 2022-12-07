@@ -15,12 +15,26 @@ class MaisonController extends AbstractController
     /**
      * @Route("/maison", name="maison")
      */
-    public function index(): Response
+    public function index()
     {
+        $repo= $this->getDoctrine()->getRepository(Maison::class);
+
+        $Maisons = $repo->findAll();
+
         return $this->render('maison/index.html.twig', [
             'controller_name' => 'MaisonController',
+            'Maisons'=>$Maisons
         ]);
     }
+
+    /**
+     * @Route("/home", name="home")
+     */
+    public function home()
+    {
+        return $this->render('maison/home.html.twig');
+    }
+
 
     /**
      * @Route("/maison/liste", name= "listmaison")
@@ -46,7 +60,6 @@ class MaisonController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted()and $form->isValid()){
             $em= $this->getDoctrine()->getManager();
-
             $em->persist($maison);
             $em->flush();
             return $this->redirectToRoute( 'listmaison');
@@ -93,7 +106,7 @@ class MaisonController extends AbstractController
 
     }
     /**
-     * @Route("/detailMaison", name= "detailMaison")
+     * @Route("/detailMaison/12", name= "detMaison")
      */
     public function detailmaison(): Response
     {
@@ -103,6 +116,25 @@ class MaisonController extends AbstractController
             "detailMaison"=>$maisons
 
         ]);
+    }
+
+    /**
+     * @Route("/searchMaison", name= "searchMaison")
+     */
+    public function searchMaison(Request $request): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $maisons = null;
+
+        if($request->isMethod( 'POST')){
+            $adresse = $request->request->get( "input_adresse");
+            $query = $em->createQuery(
+                "SELECT m FROM App\Entity\Maison m where m.adresse LIKE '".$adresse."'");
+            $maisons = $query->getResult();
+        }
+        return $this->render( 'maison/searchMaison.html.twig',[
+            'maisons'=>$maisons]);
+
     }
 
 }
