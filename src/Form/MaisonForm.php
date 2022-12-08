@@ -3,6 +3,7 @@
 namespace App\Form;
 
 
+use App\Entity\Model;
 use App\Entity\Modele;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -32,7 +33,27 @@ public function buildForm(FormBuilderInterface $builder, array $options)
                 'placeholder'=>"Saisir nombre de salle de bain",
                 'class'=> 'form-control'
             ]
-        ]);
+        ])
+        ->add( 'surface', IntegerType::class, [
+            'attr' =>[
+                'placeholder'=>"surface",
+                'class'=> 'form-control'
+            ]
+        ])
+        ->add( 'price', IntegerType::class, [
+            'attr' =>[
+                'placeholder'=>"price",
+                'class'=> 'form-control'
+            ]
+        ])
+
+        ->add( 'Modele', EntityType::class, [
+            'class'=>Model::class,
+            'choice_label'=>'libelle'
+        ])
+        ->add( 'photo', FileType::class,
+            array('attr'=> ['class'=>'form-control'],'label'=>'photo(png, jpg, jpeg, gif)'))
+    ;
 
 
 

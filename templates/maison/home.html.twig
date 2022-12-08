@@ -32,14 +32,22 @@
 </head>
 
 
-<body class="sub_page">
-<div class="example-wrapper">
-    <center>
-        <h3>Find the perfect vacation rental</h3>
-        <br>
-        <img class="img-fluid"  src={{ asset('images/m1.jpg') }}  >
-        <br>
-    </center>
+
+<div class="container">
+    <h2>aaaaa</h2>
+    <div class="row flex">
+        {% for maison in maisonss %}
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">{{ maison.adresse }}</p>
+                    <div class="text-primary">{{ maison.price }}</div>
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
 </div>
 
 

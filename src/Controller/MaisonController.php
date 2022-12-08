@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Maison;
 use App\Form\MaisonForm;
+use App\Repository\MaisonRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -23,16 +25,20 @@ class MaisonController extends AbstractController
 
         return $this->render('maison/index.html.twig', [
             'controller_name' => 'MaisonController',
-            'Maisons'=>$Maisons
+            'maisonss'=>'maisonss'
         ]);
     }
 
     /**
      * @Route("/home", name="home")
      */
-    public function home()
+    public function home(): Response
     {
-        return $this->render('maison/home.html.twig');
+        $em= $this->getDoctrine()->getManager();
+        $maisons = $em->getRepository( "App\Entity\Maison" )->findAll();
+        return $this->render('maison/home.html.twig',[
+            'maisonss'=>'maisonss'
+        ]);
     }
 
 
@@ -56,9 +62,19 @@ class MaisonController extends AbstractController
     {
         $maison= new Maison();
         $form = $this->createForm( MaisonForm::class, $maison);
-
         $form->handleRequest($request);
         if($form->isSubmitted()and $form->isValid()){
+            /** @var UploadedFile $brochureFile */
+            $file = $form->get('photo')->getData();
+
+            $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+
+            $safeFilename = $originalFilename;
+            $filename = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
+
+            $file->move('./uploads',$filename);
+            $maison->setPhoto($filename);
+
             $em= $this->getDoctrine()->getManager();
             $em->persist($maison);
             $em->flush();
@@ -119,7 +135,7 @@ class MaisonController extends AbstractController
     }
 
     /**
-     * @Route("/searchMaison", name= "searchMaison")
+     * @Route("/searchMaison", name= "Maisonsearch")
      */
     public function searchMaison(Request $request): Response
     {

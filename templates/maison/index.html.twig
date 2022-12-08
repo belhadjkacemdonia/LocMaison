@@ -33,5 +33,22 @@
             <br>
         </center>
     </div>
+    <div class="container">
+        <h2>aaaaa</h2>
+        <div class="row flex">
+            {% for maison in maisonss %}
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">{{ maison.adresse }}</p>
+                            <div class="text-primary">{{ maison.price }}</div>
+                        </div>
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
 
 {% endblock %}

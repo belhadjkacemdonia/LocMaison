@@ -16,6 +16,9 @@
         <td>Adresse</td>
         <td>nbrchambre</td>
         <td>sallebain</td>
+        <td>surface</td>
+        <td>price</td>
+        <td>photo</td>
 
 
         <td>Delete</td>
@@ -26,6 +29,9 @@
             <td>{{ m.Adresse }}</td>
             <td>{{ m.nbrchambre }}</td>
             <td>{{ m.sallebain }}</td>
+            <td>{{ m.surface }}</td>
+            <td>{{ m.price }}</td>
+            <td><img src="{{ asset('uploads/'~m.photo) }}" width="100px" height="100px"></td>
 
             <td> <a href="{{ path("maisonDelete", {'id': m.id}) }}">Delete</a></td>
             <td> <a href="{{ path("maisonUpdate", {'id': m.id}) }}">Update</a></td>

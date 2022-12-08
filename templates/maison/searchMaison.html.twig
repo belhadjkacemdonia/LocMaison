@@ -21,11 +21,13 @@
         <tr>
             <td>Adresse</td>
             <td>Modele</td>
+            <td>photo</td>
         </tr>
         {%  for m in maisons %}
         <tr>
             <td>{{m.adresse}}</td>
-            <td>{{m.modele}}</td>
+            <td>{{m.modele.libelle}}</td>
+            <td><img src="{{ asset('uploads/'~m.photo) }}" width="100px" height="100px"></td>
         </tr>
         {% endfor %}
     </table>
