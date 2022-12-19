@@ -17,15 +17,18 @@ class MaisonController extends AbstractController
     /**
      * @Route("/maison", name="maison")
      */
-    public function index()
+    public function index( MaisonRepository $repoMaison): Response
     {
-        $repo= $this->getDoctrine()->getRepository(Maison::class);
+        $repoMaison= $this->getDoctrine()->getRepository(Maison::class);
 
-        $Maisons = $repo->findAll();
+        $maisons = $repoMaison->findAll();
+        //dd($maisons);
+
+
 
         return $this->render('maison/index.html.twig', [
             'controller_name' => 'MaisonController',
-            'maisonss'=>'maisonss'
+            'maisons'=>'maisons'
         ]);
     }
 

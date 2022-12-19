@@ -1,12 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Registration</title>
-    </head>
-    <body>
+
 
     <h1>connection </h1>
     <form action="{{ path('security_login') }}" method="post">
@@ -17,7 +11,7 @@
             <input placeholder="password" required name="_password" type="password" class="form-control">
         </div><br>
         <div class="form-group">
-            <button href="{{ path('home') }}" type="submit" class="btn btn-success">Login</button>
+            <button href="{{ path('home') }}" type="submit" style="background-color: #95a5a6" class="btn btn-success">Login</button>
         </div>
     </form>
 {% endblock %}
