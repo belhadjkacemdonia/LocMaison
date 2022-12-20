@@ -1,15 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MaisonController!{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-
-
-</style>
-
 
     <head>
         <!-- Basic -->
@@ -21,37 +14,82 @@
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+
+
+
+
         <!-- bootstrap core css -->
+
         <!-- fonts style -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700&display=swap" rel="stylesheet">
         <!-- Custom styles for this template -->
         <link href="css/style.css" rel="stylesheet" />
         <!-- responsive style -->
         <link href="css/responsive.css" rel="stylesheet" />
-
-        <style> table {
-                border-spacing: 30px;
-            }</style>
     </head>
-    <div class="example-wrapper">
-        <center>
-            <h3>Find the perfect vacation rental</h3>
-            <br>
-            <img class="img-fluid"  src={{ asset('images/m1.jpg') }}  >
-            <br>
-        </center>
-    </div>
 
-    <div class="maisons">
-        {% for maison in maisons %}
-            <div class="maison_photo">
-                <img src="{{ maisons.photo }}">
+    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+
+        <div class="carousel-inner">
+            <div class="carousel-item">
+                <svg class="bd-placeholder-img card-img-top"  role="img"  > <img   src={{ asset('images/m1.jpg') }}  ></svg>
+
+
             </div>
-        {% endfor %}
+            <div class="carousel-item active">
+                <svg class="bd-placeholder-img card-img-top"  role="img"  > <img   src={{ asset('images/m2.jpg') }}  ></svg>
+
+
+            </div>
+            <div class="carousel-item">
+                <svg class="bd-placeholder-img card-img-top"  role="img"  > <img   src={{ asset('images/m3.jpg') }}  ></svg>
+
+
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
- 
 
 
 
+    <br>
+    <h1 class="row-space-1">
+        <strong>The 1st website for renting apartments and holiday homes in Tunisia!</strong>
+    </h1>
+   <br>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {%  for m in maisons %}
+                    <div class="col">
+                        <div class="card shadow-sm">
 
+                            <svg class="bd-placeholder-img card-img-top"  role="img"   ><img src="{{ asset('uploads/'~m.photo) }}"></svg>
+
+                            <div class="card-body">
+                                <p>Modele: {{ m.modele.libelle }}</p>
+                                <p>Price: {{ m.price }}$</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" href="{{ path("detMaison", {'id': m.id}) }}">View</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" href="{{ path("detMaison", {'id': m.id}) }}">Rent</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
 {% endblock %}

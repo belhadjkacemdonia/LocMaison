@@ -71,6 +71,7 @@ class Maison
     public function __construct()
     {
         $this->Locations = new ArrayCollection();
+
     }
 
     public function getId(): ?int

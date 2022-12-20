@@ -2,10 +2,16 @@
 {% block body %}
 
     <article>
+        {%  for m in detailMaison %}
+
         <h2>titre</h2>
         <div class="content">
-            <img src="asset('images/s-6.jpg')" >
-            <p>hhhhhhhhhhhhh</p>
+            <p>Modele: {{ m.modele.libelle }}</p>
+            <p>Price: {{ m.price }}$</p>
+            <p>Surface: {{ m.surface }}</p>
+            <img src="{{ m.photo }}">
         </div>
+        {% endfor %}
+
     </article>
 {% endblock %}

@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -17,30 +18,25 @@ class MaisonController extends AbstractController
     /**
      * @Route("/maison", name="maison")
      */
-    public function index( MaisonRepository $repoMaison): Response
+    public function index(): Response
     {
-        $repoMaison= $this->getDoctrine()->getRepository(Maison::class);
-
-        $maisons = $repoMaison->findAll();
-        //dd($maisons);
-
-
-
+        $em= $this->getDoctrine()->getManager();
+        $Maisons = $em->getRepository( "App\Entity\Maison" )->findAll();
         return $this->render('maison/index.html.twig', [
-            'controller_name' => 'MaisonController',
-            'maisons'=>'maisons'
+            'maisons'=>$Maisons
         ]);
     }
 
     /**
-     * @Route("/home", name="home")
+     * @Route("/gallery", name="image")
      */
-    public function home(): Response
+    public function gallery(): Response
     {
         $em= $this->getDoctrine()->getManager();
         $maisons = $em->getRepository( "App\Entity\Maison" )->findAll();
-        return $this->render('maison/home.html.twig',[
-            'maisonss'=>'maisonss'
+        return $this->render('maison/gallery.html.twig', [
+            "Maison"=>$maisons
+
         ]);
     }
 
@@ -125,7 +121,7 @@ class MaisonController extends AbstractController
 
     }
     /**
-     * @Route("/detailMaison/12", name= "detMaison")
+     * @Route("/detailMaison/id", name= "detMaison")
      */
     public function detailmaison(): Response
     {

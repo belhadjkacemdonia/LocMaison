@@ -52,7 +52,7 @@ public function buildForm(FormBuilderInterface $builder, array $options)
             'choice_label'=>'libelle'
         ])
         ->add( 'photo', FileType::class,
-            array('attr'=> ['class'=>'form-control'],'label'=>'photo(png, jpg, jpeg, gif)'))
+            array('attr'=> ['class'=>'form-control'],'data_class' => null,'multiple' => false,'required'=> false))
     ;
 
 
