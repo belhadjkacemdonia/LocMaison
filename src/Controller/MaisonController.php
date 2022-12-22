@@ -154,18 +154,6 @@ class MaisonController extends AbstractController
 
     }
 
-    /**
-     * @Route("/rentMaison/{id}",  name= "rentMaison" , methods={"GET"})
-     */
 
-    public function rent(Request $request, $id): Response
-    {
-        $em= $this->getDoctrine()->getManager();
-        $Maison =$em->getRepository( "App\Entity\Maison")->find($id);
-        return $this->render('maison/rent.html.twig', [
-            'Maison' => $Maison,
-        ]);
-
-    }
 
 }
