@@ -15,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MaisonController extends AbstractController
 {
+
     /**
      * @Route("/maison", name="maison")
      */
@@ -121,16 +122,17 @@ class MaisonController extends AbstractController
 
     }
     /**
-     * @Route("/detailMaison/id", name= "detMaison")
+     * @Route("/detailMaison/{id}",  name= "detMaison" , methods={"GET"})
      */
-    public function detailmaison(): Response
+
+        public function detailmaison(Request $request, $id): Response
     {
         $em= $this->getDoctrine()->getManager();
-        $maisons = $em->getRepository( "App\Entity\Maison" )->findAll();
+        $Maison =$em->getRepository( "App\Entity\Maison")->find($id);
         return $this->render('maison/detMaison.html.twig', [
-            "detailMaison"=>$maisons
-
+            'Maison' => $Maison,
         ]);
+
     }
 
     /**
@@ -149,6 +151,20 @@ class MaisonController extends AbstractController
         }
         return $this->render( 'maison/searchMaison.html.twig',[
             'maisons'=>$maisons]);
+
+    }
+
+    /**
+     * @Route("/rentMaison/{id}",  name= "rentMaison" , methods={"GET"})
+     */
+
+    public function rent(Request $request, $id): Response
+    {
+        $em= $this->getDoctrine()->getManager();
+        $Maison =$em->getRepository( "App\Entity\Maison")->find($id);
+        return $this->render('maison/rent.html.twig', [
+            'Maison' => $Maison,
+        ]);
 
     }
 

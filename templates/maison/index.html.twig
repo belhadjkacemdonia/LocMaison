@@ -74,12 +74,13 @@
                             <svg class="bd-placeholder-img card-img-top"  role="img"   ><img src="{{ asset('uploads/'~m.photo) }}"></svg>
 
                             <div class="card-body">
+                                <p>Adresse: {{ m.adresse }}</p>
                                 <p>Modele: {{ m.modele.libelle }}</p>
-                                <p>Price: {{ m.price }}$</p>
+                                <b>Price: {{ m.price }}$</b>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" href="{{ path("detMaison", {'id': m.id}) }}">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" href="{{ path("detMaison", {'id': m.id}) }}">Rent</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"> <a href="{{ path("detMaison", {'id': m.id}) }}">View</a></button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"><a  href="{{ path("rentMaison", {'id': m.id}) }}">Rent</a></button>
 
                                     </div>
                                 </div>

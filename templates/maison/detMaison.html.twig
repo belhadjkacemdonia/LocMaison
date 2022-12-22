@@ -1,17 +1,41 @@
 {% extends 'base.html.twig' %}
+{% block title %}Room{% endblock %}
+
 {% block body %}
 
-    <article>
-        {%  for m in detailMaison %}
+    <table class="table">
+        <tr>
+            <td><img src="{{ asset('uploads/'~Maison.photo) }}"width="80%" height="80%" ></td>
+        </tr>
+        <tr>
+            <th>adresse</th>
+            <td>{{ Maison.adresse }}</td>
+        </tr>
+        <tr>
+            <th>Modele</th>
+            <td>{{Maison.modele.libelle}} </td>
+        </tr>
+        <tr>
+            <th>surface</th>
+            <td>{{ Maison.surface }}</td>
+        </tr>
+        <tr>
+            <th>sallebain</th>
+            <td>{{ Maison.sallebain }}</td>
+        </tr>
+        <tr>
+            <th>nbrchambre</th>
+            <td>{{ Maison.nbrchambre }}</td>
+        </tr>
 
-        <h2>titre</h2>
-        <div class="content">
-            <p>Modele: {{ m.modele.libelle }}</p>
-            <p>Price: {{ m.price }}$</p>
-            <p>Surface: {{ m.surface }}</p>
-            <img src="{{ m.photo }}">
-        </div>
-        {% endfor %}
+        <tr>
+            <th>Price</th>
+            <td><b>{{ Maison.price }}$</b></td>
+        </tr>
+    </table>
 
-    </article>
+    <button style="background-color: #95a5a6" class="btn btn-success" type="submit" ><a  href="{{ path("rentMaison", {'id': Maison.id}) }}">Rent</a></button>
+
+
+
 {% endblock %}
