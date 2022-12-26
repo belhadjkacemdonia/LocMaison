@@ -31,16 +31,7 @@ class ReservationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var UploadedFile $brochureFile */
-            $file = $form->get('photo')->getData();
 
-            $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-
-            $safeFilename = $originalFilename;
-            $filename = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
-
-            $file->move('./uploads',$filename);
-            $reservation->setPhoto($filename);
 
             $em= $this->getDoctrine()->getManager();
             $em->persist($reservation);
@@ -55,4 +46,6 @@ class ReservationController extends AbstractController
         ]);
 
     }
+
+
 }

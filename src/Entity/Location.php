@@ -37,15 +37,27 @@ class Location
      */
     private $prix;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="Locations")
-     */
-    private $client;
+
 
     /**
      * @ORM\ManyToOne(targetEntity=Maison::class, inversedBy="Locations")
      */
     private $maison;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $firstname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lastname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $cin;
 
 
     public function getId(): ?int
@@ -101,17 +113,7 @@ class Location
         return $this;
     }
 
-    public function getClient(): ?Client
-    {
-        return $this->client;
-    }
 
-    public function setClient(?Client $client): self
-    {
-        $this->client = $client;
-
-        return $this;
-    }
 
     public function getMaison(): ?Maison
     {
@@ -121,6 +123,42 @@ class Location
     public function setMaison(?Maison $maison): self
     {
         $this->maison = $maison;
+
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function getCin(): ?string
+    {
+        return $this->cin;
+    }
+
+    public function setCin(string $cin): self
+    {
+        $this->cin = $cin;
 
         return $this;
     }
